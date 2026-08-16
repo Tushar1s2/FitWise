@@ -19,10 +19,30 @@ const workoutSchema = new Schema({
         enum: ["Beginner", "Intermediate", "Advanced"],
         required: true
     },
-    exercises: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Exercise'
-    }],
+    exercises: [
+        {
+            exercise: {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: "Exercise",
+                required: true
+            },
+
+            sets: {
+                type: Number,
+                required: true
+            },
+
+            reps: {
+                type: String,
+                required: true
+            },
+
+            restTime: {
+                type: String,
+                required: true
+            }
+        }
+    ],
     daysPerWeek: {
         type: Number,
         required: true

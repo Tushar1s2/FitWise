@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const mealSchema = new Schema({
+
     name: {
         type: String,
         required: true
@@ -50,6 +51,9 @@ const mealSchema = new Schema({
         type: Number,
         required: true
     }
+
 });
 
-module.exports = mongoose.model("Meal", mealSchema);
+module.exports =
+    mongoose.models.Meal ||
+    mongoose.model("Meal", mealSchema);

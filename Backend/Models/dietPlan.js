@@ -28,17 +28,26 @@ const dietPlanSchema = new Schema({
         ]
     },
 
-    calories: {
+    dailyCalories: {
         type: Number,
         required: true
     },
 
     meals: [
         {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "Meal"
+            meal: {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: "Meal",
+                required: true
+            },
+            mealType: {
+                type: String,
+                required: true
+            }
         }
     ]
 });
 
-module.exports = mongoose.model("DietPlan", dietPlanSchema);
+module.exports =
+    mongoose.models.DietPlan ||
+    mongoose.model("DietPlan", dietPlanSchema);
